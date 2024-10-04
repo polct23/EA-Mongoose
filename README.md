@@ -13,7 +13,12 @@ Instalar TypeScript
 npm install -g typescript
 ```
 
+## Clonar el proyecto
 
+```
+git clone https://github.com/rocmeseguer/EA-Mongoose
+cd EA-Mongoose
+```
 
 ## Dependencias del proyecto
 
@@ -22,11 +27,19 @@ Instalar Mongoose y otras dependencias
 npm install
 ```
 
+## Estructura del proyecto
+
+├── src
+├── build
+├── package.json       # Configuración de las dependencias y scripts
+├── tsconfig.json       # Configuración de TypeScript
+├── node_modules
+├── .gitignore
+├── LICENSE
+└── README.md
+
+
 ## Complilación y ejecución
-
-El codigo TS está en el directorio src/
-
-El JS está en el directorio build/
 
 Transpilar de TS a JS
 ```
