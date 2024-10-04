@@ -1,19 +1,32 @@
-# EA-JS
+# EA Node.js + TypeScript + Mongoose
 
+## Requisitos Previos
 
-Instalar Node.js y Mongod
+Asegúrate de tener instalados los siguientes programas en tu sistema:
+
+- [Node.js](https://nodejs.org/) (versión 14.x o superior)
+- [MongoDB](https://www.mongodb.com/) (puede ser local o en la nube a través de MongoDB Atlas)
+- [npm](https://www.npmjs.com/) 
 
 Instalar TypeScript
 ```
 npm install -g typescript
 ```
 
+
+
+## Dependencias del proyecto
+
 Instalar Mongoose y otras dependencias
 ```
 npm install
 ```
 
-El codigo está en el directorio src/
+## Complilación y ejecución
+
+El codigo TS está en el directorio src/
+
+El JS está en el directorio build/
 
 Transpilar de TS a JS
 ```
