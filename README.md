@@ -29,6 +29,7 @@ npm install
 
 ## Estructura del proyecto
 
+```
 ├── src
 ├── build
 ├── package.json       # Configuración de las dependencias y scripts
@@ -37,7 +38,7 @@ npm install
 ├── .gitignore
 ├── LICENSE
 └── README.md
-
+```
 
 ## Complilación y ejecución
 
