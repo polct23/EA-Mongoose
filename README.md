@@ -31,7 +31,7 @@ npm install
 
 ```
 ├── src
-├── build
+├── dist
 ├── package.json       # Configuración de las dependencias y scripts
 ├── tsconfig.json       # Configuración de TypeScript
 ├── node_modules
@@ -49,5 +49,5 @@ tsc
 
 Ejecutar JS
 ```
-node build/mongoogse.js
+node dist/mongoogse.js
 ```

@@ -1,36 +1,40 @@
-import { Schema, model, connect } from 'mongoose';
+import mongoose from 'mongoose';
+import { UserModel, IUser } from './user.js';
 
-// 1. Create an interface representing a document in MongoDB.
-interface IUser {
-  name: string;
-  email: string;
-  avatar?: string;
-}
+async function main() {
+  mongoose.set('strictQuery', true); // Mantiene el comportamiento actual
 
-// 2. Create a Schema corresponding to the document interface.
-const userSchema = new Schema<IUser>({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  avatar: String
-});
-
-// 3. Create a Model.
-const User = model('User', userSchema);
-
-run().catch(err => console.log(err));
-
-async function run() {
-  // 4. Connect to MongoDB
-  await connect('mongodb://127.0.0.1:27017/test');
+  await mongoose.connect('mongodb://127.0.0.1:27017/test')
+  .then(() => console.log('Conectado a MongoDB'))
+  .catch(err => console.error('Error al conectar:', err));
 
   const user1:  IUser = {
     "name": 'Bill',
     "email": 'bill@initech.com',
     "avatar": 'https://i.imgur.com/dM7Thhn.png'
   };
-  
-  const newUser= new User(user1);
-  await newUser.save();
 
-  console.log(newUser.email); // 'bill@initech.com'
+  console.log("user1", user1); 
+  const newUser= new UserModel(user1);
+  const user2: IUser = await newUser.save();
+  console.log("user2",user2);
+
+  // findById devuelve un objeto usando el _id.
+  const user3: IUser | null = await UserModel.findById(user2._id);
+  console.log("user3",user3);
+
+  // findOne devuelve un objeto usando un filtro.
+  const user4: IUser | null = await UserModel.findOne({name: 'Bill'});
+  console.log("user4",user4);
+
+  // Partial<IUser> Indica que el objeto puede tener solo algunos campos de IUser.
+  // select('name email') solo devuelve name y email.
+  // lean() devuelve un objeto plano de JS en lugar de un documento de Mongoose.
+  const user5: Partial<IUser> | null  = await UserModel.findOne({ name: 'Bill' })
+    .select('name email').lean();
+  console.log("user5",user5);
 }
+
+main()
+
+    
